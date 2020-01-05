@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]><html class="lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    {MobileAppHeaders}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>
+        {Title}
+        {block:SearchPage}
+            ({lang:Search results for SearchQuery})
+        {/block:SearchPage}
+        {block:PermalinkPage}
+            {block:PostSummary} — {PostSummary}{/block:PostSummary}
+        {/block:PermalinkPage}
+    </title>
+    {block:Description}
+        <meta name="description" content="{MetaDescription}" />
+    {/block:Description}
+    
+    {block:Hidden}
+        
+        <meta name="if:Infinite Scroll" content="1" />
+        <meta name="if:Show Logo On Top" content="1" />
+        <meta name="if:Show More Collections Button" content="1" />
+        <meta name="if:Show Shop Footer Button" content="1" />
+        <meta name="if:Show Journal Footer Button" content="1" />
+        
+        <meta name="image:Shop logo" content="" />
+        <meta name="image:Top Product Image" content="" />
+        <meta name="image:Header BG Image" content="" />
+        <meta name="image:Dropdown Navs BG Image" content="" />
+        
+        <meta name="color:Header BG Color" content="" />
+        <meta name="color:Top Item Label Color" content="" />
+        <meta name="color:Dropdown Navs BG Color" content="" />
+        <meta name="color:Posts BG Color" content="#fbf4f7" />
+        <meta name="color:Content Links Color" content="#f26d7d" />
+        
+        <meta name="text:Top Product Name and Price" content="" />
+        <meta name="text:Shop Description" content="" />
+        <meta name="text:Ask Label Icon" content="👋" />
+        <meta name="text:Shop Nav Label" content="All collections" />
+        <meta name="text:Shop Nav Anchor Tags" content="<a>Collection 1</a>" />
+        <meta name="text:Shop Collections Code" content="" />
+        <meta name="text:Timezone" content="UTC" />
+        <meta name="text:Business Days Hours" content="9h-18h" />
+        <meta name="text:Sat Hours" content="9h-13h" />
+        <meta name="text:Sun Hours" content="CLOSED" />
+        <meta name="text:Shop Footer Button Link" content="" />
+        <meta name="text:Shop Footer Button Label" content="About the store" />
+        <meta name="text:Shop Email" content="hello@shopbrand.com" />
+        <meta name="text:Shop Phone Number" content="393-555-758" />
+        <meta name="text:Shop Address" content="R. de Santa Cruz do Castelo Lisboa, 1100-129" />
+        <meta name="text:Shop Map Embed Code" content="" />
+        
+        <meta name="text:Journal Nav Label" content="Categories" />
+        <meta name="text:Top Journal Link" content="" />
+        <meta name="text:Top Journal Link Label" content="Our first steps" />
+        <meta name="text:Disqus Shortname" content="" />
+        <meta name="text:Journal Footer Button Link" content="" />
+        <meta name="text:Journal Footer Button Label" content="Check our store" />
+        
+        <meta name="text:Facebook Link" content="" />
+        <meta name="text:Twitter Link" content="" />
+        <meta name="text:Instagram Link" content="" />
+        <meta name="text:Pinterest Link" content="" />
+        <meta name="text:Youtube Link" content="" />
+        <meta name="text:Footer Current Year" content="2019" />
+        
+        {/block:Hidden}
+    
+    <link rel="shortcut icon" href="{Favicon}"/>
+    <link rel="alternate" type="application/rss+xml" href="{RSS}"/>
+    <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+    
+    <!-- Theme Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://static.tumblr.com/kifah6n/m8cq3lye8/shopify.css" />
+    <link rel="stylesheet" href="https://static.tumblr.com/kifah6n/z60pzydpr/pxu-photoset.min.css" />
+    <link rel="stylesheet" href="https://static.tumblr.com/xeccbfq/9Qenv9yn8/normalize.min.css" />
+    <link rel="stylesheet" href="https://static.tumblr.com/kifah6n/UoBpzybql/styles.min.css" />
+      
+    <style type="text/css">
+        header {
+            background: url('{image:Header BG Image}') center no-repeat;
+            background-color: {color:Header BG Color};
+            background-size: cover;
+        }
+        
+        .logo {
+            {block:IfShowLogoOnTop}
+                width: 60px;    /*** metatag ***/
+                height: 60px;
+                background: url('{image:Shop logo}') no-repeat;
+                background-size: 60px;
+            {/block:IfShowLogoOnTop}
+        }
+        
+        #title {
+            {block:IfShowLogoOnTop}
+                display: none;
+            {/block:IfShowLogoOnTop}
+        }
+        
+        
+        #top-item-img {
+            background: url('{image:Top Product Image}') center no-repeat;
+            background-size: 230px;
+        }
+        
+        #top-item-label {
+            color: {color:Top Item Label Color};
+        }
+        
+        .nav-collections {
+            background: url('{image:Dropdown Navs BG Image}') center no-repeat;
+            background-color: {color:Dropdown Navs BG Color};
+            background-size: cover;
+        }
+        
+        .post {
+            background: {color:Posts BG Color};
+        }
+        
+        .post-content a {
+            color: {color:Content Links Color};
+        }
+        
+        #footer-logo {
+            background: url('{image:Shop logo}') no-repeat;
+            background-size: 60px;
+        }
+        
+        {block:AskPage}
+            #tab-journal, footer {
+                display: none!important;
+            }
+        
+            #tab2-label {
+                display: block;
+                margin: 0;
+                height: auto;
+            }
+            
+            #ask-label a:hover {
+                text-decoration: none!important;
+            }
+            
+            .text iframe {
+                min-height: 190px!important;
+            }
+            
+            .collections-embed, .nav-container {
+                display: none;
+            }
+        {/block:AskPage}
+
+        {block:PermalinkPage}
+            .post {
+                max-width: 600px;
+            }
+            
+            #ask-label a:hover {
+                text-decoration: none;
+            }
+        {/block:PermalinkPage}
+        
+        {block:HomePage}
+            @media (min-width: 1024px) {
+                .posts {
+                    display: block;
+                    width: 85%;
+                    margin: 0 auto;
+                }
+                
+                .post {
+                    display: block;
+                    width: 40%;
+                    float: left;
+                    clear: left;
+                }
+                
+                .post.right {
+                    float: right;
+                    clear: right;
+                }
+            }
+            
+            @media (min-width: 1250px) {
+                .post {
+                    width: 45%;
+                }
+            }
+        {/block:HomePage}
+    
+    {CustomCSS}
+    
+    </style>
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://static.tumblr.com/kifah6n/dY2q3ly54/shopify-theme.js"></script>
+    <script type="text/javascript" src="https://static.tumblr.com/kifah6n/ZgXpzwt9r/pxuphotoset.min.js"></script>
+    <script type="text/javascript">
+        window.addEventListener("load", () => {
+            const setPhotosets = () => {
+                $('.photo-slideshow').pxuPhotoset({
+                    lightbox: true,
+                    rounded: false,
+                    gutter: '7px',
+                    borderRadius: '0px',
+                    photoset: '.photo-slideshow',
+                    photoWrap: '.photo-data',
+                    photo: '.pxu-photo'
+                });
+            }
+            setPhotosets();
+            {block:IfInfiniteScroll}
+               window.addEventListener("scroll", () => {
+                    const h = window.scrollY + window.innerHeight;
+                    const end = h - document.body.scrollHeight === 0;
+                    if (end) {
+                        setTimeout(() => setPhotosets(), 500);
+                    }
+                });
+            {/block:IfInfiniteScroll}
+        });
+    </script>
+    {block:IfInfiniteScroll}
+        <script type="text/javascript" src="https://static.tumblr.com/kifah6n/g3eq3lw11/infinite-scroll.js"
+            scrll_c="window" posts_c=".posts" btn_c="#load-more" btn_tgl="showup"
+            auto_enabled=false auto_from="*" auto_to="*">
+        </script>
+    {/block:IfInfiniteScroll}
+    <script type="text/javascript">
+        const show = () => {
+            showNext();
+            adjustPostHeights();
+        }
+    </script>
+    {block:PermalinkPage}
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.buttons-label').attr('href', '{BlogURL}');
+                $('#topbtn-journal:contains()').html('Back to journal').css('font-size', '.965em');
+            });
+        </script>
+    {/block:PermalinkPage}
+    {block:AskPage}
+        <script type="text/javascript">
+            $(document).ready(function() {
+                // Remove/hide journal tab
+                $('#tab-2').hide();
+                // Replace with fake tab (link) on top
+                $('#tab2-label').addClass('ui-tabs ui-tabs-nav ui-tabs-anchor');
+                // Change previous hyperlink to 'go back to' button
+                $('#ask-label').addClass('buttons-link');
+                $('#ask-title').empty().addClass('buttons-label');
+                $('#ask-label span').empty();
+                $('#ask-label a').attr('href', '{BlogURL}').css({'margin-right': '0' , 'font-size': '1.2em' , 'width': '106px'});
+                $('#ask-label a:contains()').html('Back to shop');
+            });
+            // Redirect to main url on tab Journal click
+            // Then make this tab active
+            $(document).ready(function() {
+                var labelURL = $('#tab2-label').attr('href');
+                
+                if (labelURL === '{BlogURL}') {
+                    $("a#tab2-label").click(function() {
+                        $('#tabs').tabs('option', 'active', 1);
+                    });
+                }
+            });
+        </script>
+    {/block:AskPage}
+</head>
+<header>
+    <div id="loader" class="center"></div> 
+    <div class="header-items">
+        <div id="logo-wrapper">
+            <a href="{BlogURL}"><div class="logo"></div></a>
+            <a href="{BlogURL}" id="title">{Title}</a>
+        </div>
+        <div id="top-item-wrapper">
+            <div id="top-item-img"></div>
+            <div id="top-item-label">{text:Top Product Name and Price}</div>
+        </div>
+    </div>
+</header>
+<body>
+    <button id="to-top" title="Go to top">▲<br> <span>Top</span></button>
+    <div id="tabs">
+        <ul>
+            <li><a id="tab-1" class="tabs-label" href="#tab-shop">Shop</a></li>
+            <li><a id="tab-2" class="tabs-label" href="#tab-journal">Journal</a></li>
+            <span><a id="tab2-label" href="{BlogURL}">Journal</a></span>
+        </ul>
+<!--------- #tab-shop ---------->
+        <div id="tab-shop">
+            <div class="shop-top-message">{text:Shop Description}</div>
+            {block:AskEnabled}
+                <div id="ask-label">
+                    <a id="ask-title" href="/ask">{AskLabel}</a><span>{text:Ask Label Icon}</span>
+                </div>
+            {/block:AskEnabled}
+            <nav class="nav-collections">
+                <div class="nav-container">
+                    <span class="dropdown-label">{text:Shop Nav Label}</span>
+                    <div class="dropdown">
+                        <div class="dropdown-field">
+                            <div class="dropdown-arrow">&#9660;</div>
+                        </div>
+                        <div id="shop-nav" class="dropdown-content">
+                            {text:Shop Nav Anchor Tags}
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="collections-embed">
+                {text:Shop Collections Code}
+            </div>
+            {block:AskPage}
+                <div class="posts">
+                    {block:Posts}
+                        <div class="post" id="{PostID}" url="{RelativePermalink}">
+                            <div class="post-content">
+                                {block:Text}
+                                    <div class="text">
+                                        {block:Title}
+                                            <h3><a href="{Permalink}">{Title}</a></h3>
+                                        {/block:Title}
+                                        {Body}
+                                    </div>
+                                {/block:Text}
+                            </div>
+                        </div>
+                    {/block:Posts}
+                </div>
+            {/block:AskPage}
+            <div id="footer1">
+                <div class="shop-footer">
+                    <div id="shop-hours">
+                        <div class="timezone">
+                            <span>{text:Timezone}</span><br>
+                            <span>Working hours</span>
+                        </div>
+                        <div class="divisor"></div>
+                        <div class="business-time">
+                            <span>Seg/Sex: </span>{text:Business Days Hours}<br>
+                            <span>Sat: </span>{text:Sat Hours}<br>
+                            <span>Dom: </span>{text:Sun Hours}
+                        </div>
+                    </div>
+                    <div id="button-email">
+                        {block:IfShowShopFooterButton}
+                            <div class="buttons-link" class="btn-click">
+                                <a href="{text:Shop Footer Button Link}" class="buttons-label">
+                                    {text:Shop Footer Button Label}</a>
+                            </div>
+                        {/block:IfShowShopFooterButton}
+                        <div id="shop-email">
+                            {text:Shop Email}
+                        </div>
+                    </div>
+                    <div class="divisor" id="none"></div>
+                    <div class="more-contacts">
+                        <div id="shop-phone">
+                            {text:Shop Phone Number}
+                        </div>
+                        <div id="shop-address">
+                            {text:Shop Address}
+                        </div>
+                        <div id="shop-map">
+                            {text:Shop Map Embed Code}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!---------- #tab-journal ---------->
+        <div id="tab-journal">
+            {block:Description}
+                <div id="description">{Description}</div>
+            {/block:Description}
+            <div class="buttons-link" class="btn-click">
+                <a href="{text:Top Journal Link}" id="topbtn-journal" class="buttons-label">{text:Top Journal Link Label}</a>
+            </div>
+            <nav class="nav-collections">
+                <div class="nav-container">
+                    <span class="dropdown-label">{text:Journal Nav Label}</span>
+                    <div class="dropdown">
+                        <div class="dropdown-field">
+                            <div class="dropdown-arrow">&#9660;</div>
+                        </div>
+                        <div class="dropdown-content">
+                            {block:Pages}
+                                <a href="{URL}">{Label}</a>
+                            {/block:Pages}
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="posts">
+                {block:Posts}
+                    <div class="post" id="{PostID}" url="{RelativePermalink}">
+                        <div class="post-wrapper">
+                            <div class="post-content">
+                                {block:Text}
+                                    <div class="text">
+                                        {block:Title}
+                                            <h3><a href="{Permalink}">{Title}</a></h3>
+                                        {/block:Title}
+                                        {Body}
+                                    </div>
+                                {/block:Text}
+                                {block:Photo}
+                                    <div class="photo">
+                                        <a href="{Permalink}">
+                                            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" />
+                                        </a>
+                                        {Caption}
+                                    </div>
+                                {/block:Photo}
+                                {block:Panorama}
+                                    <div class="panorama">
+                                        {LinkOpenTag}
+                                            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" />
+                                        {LinkCloseTag}
+                                        {block:Caption}
+                                            <div class="caption">{Caption}</div>
+                                        {/block:Caption}
+                                    </div>
+                                {/block:Panorama}
+                                {block:Photoset}
+                                    <div class="photoset">
+                                        <div class="photo-slideshow" id="photoset_{PostID}" data-layout="{PhotosetLayout}">
+                                            {block:Photos}
+                                                <div class="photo-data">
+                                                    <div class="pxu-photo">
+                                                        <img src="{PhotoURL-500}" width="{PhotoWidth-500}"
+                                                            height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}"
+                                                            data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}">
+                                                    </div>
+                                                    <a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}"></a>
+                                                </div>
+                                            {/block:Photos}
+                                        </div>
+                                    </div>
+                                    {block:Caption}
+                                        {Caption}
+                                    {/block:Caption}
+                                {/block:Photoset}
+                                {block:Quote}
+                                    <div class="quote">
+                                        <span>&ldquo;</span> {Quote} <span>&rdquo;</span>
+                                        {block:Source}
+                                            <div class="source">—  {Source}</div>
+                                        {/block:Source}
+                                    </div>
+                                {/block:Quote}
+                                {block:Link}
+                                    <div class="link">
+                                        <a href="{URL}" {Target} >
+                                            {block:Thumbnail}
+                                                <img src="{Thumbnail-HighRes}" />
+                                            {/block:Thumbnail}
+                                                <div class="title-excerpt">
+                                                    {Name}
+                                                </div>
+                                            {block:Excerpt}
+                                                <div class="excerpt">{Excerpt}</div>
+                                            {/block:Excerpt}
+                                        </a>
+                                    </div>
+                                {/block:Link}
+                                {block:Chat}
+                                    <div class="chat">
+                                        {block:Title}
+                                            <h3><a href="{Permalink}">{Title}</a></h3>
+                                        {/block:Title}
+                                        <ul class="chat-lines">
+                                            {block:Lines}
+                                                <li class="{Alt} user_{UserNumber}">
+                                                    {block:Label}
+                                                        <span class="label">{Label}</span><br>
+                                                    {/block:Label}
+                                                    <span class="lines">{Line}</span>
+                                                </li>
+                                            {/block:Lines}
+                                        </ul>
+                                    </div>
+                                {/block:Chat}
+                                {block:Answer}
+                                    <div class="answer">
+                                        <div id="answer-title">{text:Ask Post Title}</div>
+                                        <div class="question">{Question}</div>
+                                        <span class="asking">
+                                            <img src="{AskerPortraitURL-16}" /> 
+                                            {Asker}
+                                        </span>
+                                        <div class="blog-answer">{Answer}</div>
+                                    </div>
+                                {/block:Answer}
+                                {block:Video}
+                                    <div class="videowrapper {TagAsClasses}">
+                                        {Video-700}
+                                    </div>
+                                    {block:ContentSource}
+                                        <div class="video-source">
+                                            (via <a href="{SourceURL}">
+                                                {block:SourceLogo}
+                                                    <img src="{BlackLogoURL}" width="{LogoWidth}" 
+                                                            height="{LogoHeight}" alt="{SourceTitle}" />
+                                                {/block:SourceLogo}
+                                                {block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+                                            </a>)
+                                        </div>
+                                    {/block:ContentSource}
+                                    {block:Caption}
+                                        {Caption}
+                                    {/block:Caption}
+                                {/block:Video}
+                                {block:Audio}
+                                    <div class="audio">
+                                        {block:AudioEmbed}
+                                            {AudioEmbed}
+                                        {/block:AudioEmbed}
+                                        {block:Caption}
+                                            <div class="caption">
+                                                {Caption}
+                                            </div>
+                                        {/block:Caption}
+                                    </div>
+                                {/block:Audio}
+                                {block:More}
+                                    <div class="more">
+                                        <button type="button" id="buttonmore" class="btn-click buttons-link">
+                                            <a href="{Permalink}" class="buttons-label">Keep Reading</a>
+                                        </button>
+                                    </div>
+                                {/block:More}
+                                {block:PostNotes}
+                                    <div id="disqus_thread"></div>
+                                    {block:IfDisqusShortname} 
+                                        <script>
+                                            var disqus_shortname = '{text:Disqus Shortname}';
+                                            var disqus_url = '{Permalink}';
+                                            (function() {
+                                                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                            })();
+                                        </script>
+                                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">
+                                            comments powered by Disqus.</a>
+                                        </noscript>
+                                    {/block:IfDisqusShortname}
+                                    <div class="note">
+                                        {PostNotes-16}
+                                    </div>
+                                {/block:PostNotes}
+                                </div>
+                            </div>
+                            <div class="divisor" id="d-actions"></div>
+                            <div class="actions">
+                                <a id="notes" href="{Permalink}">Notes {NoteCount}<br>
+                                    Leave a Comment!
+                                </a>
+                                <div class="actions-icons">
+                                    <div class="popup" onclick="sharePost({PostID})">
+                                        <div class="share-icon"></div>
+                                        <span class="popuptext" id="popup">
+                                            <a href='https://facebook.com/sharer.php?u=
+                                                {URLEncodedPermalink}&t={URLEncodedTitle}'
+                                            target="_blank">Facebook</a>
+                                            <br><br>
+                                            <a href='https://twitter.com/intent/tweet?text=
+                                                {URLEncodedTweetSummary}' target="_blank">Twitter</a>
+                                            <br><br>
+                                            <a href='https://reddit.com/submit?url=
+                                                {URLEncodedPermalink}' target="_blank">Reddit</a>
+                                            <br><br>
+                                            <a href='mailto:?subject={URLEncodedShareString}&body=
+                                                {URLEncodedMailSummary}'>E-mail</a>
+                                            <br><br>
+                                            <a href='{EmbedUrl}' target="_blank">Embed</a>
+                                            <br>
+                                        </span>
+                                    </div>
+                                    <a href="{ReblogURL}">
+                                       <div class="reblog-icon"></div>
+                                    </a>
+                                    <div class="like-wrapper">
+                                        {LikeButton}
+                                        <div class="like-icon"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divisor" id="d-actions"></div>
+                        </div>
+                {/block:Posts}
+            </div><!-- /posts -->
+            <div id="load-more" class="btn-click" onClick="show()">Give me more</div>
+            {block:IfNotInfiniteScroll}
+                {block:Pagination}
+                    <div class="pagination">
+                        {block:PreviousPage}
+                            <a href="{PreviousPage}">&#9664;</a>
+                        {/block:PreviousPage}
+                        {block:JumpPagination length="5"}
+                            {block:CurrentPage}
+                                <span class="current_page">{PageNumber}</span>
+                            {/block:CurrentPage}
+                            {block:JumpPage}
+                                <a class="jump_page" href="{URL}">{PageNumber}</a>
+                            {/block:JumpPage}
+                        {/block:JumpPagination}
+                        {block:NextPage}
+                            <a href="{NextPage}">&#9654;</a>
+                        {/block:NextPage}
+                    </div>
+                {/block:Pagination}
+            {block:IfNotInfiniteScroll}
+            {block:IfShowJournalFooterButton}
+                <div id="footer1">
+                    <div class="journal-footer">
+                        <div class="buttons-link" class="btn-click">
+                            <a href="{text:Journal Footer Button Link}" class="buttons-label">
+                                {text:Journal Footer Button Label}</a>
+                        </div>
+                    </div>
+                </div>
+            {/block:IfShowJournalFooterButton}
+        </div> <!-- /tab journal -->
+<!---------- doc footer ---------->
+        <footer>
+            <div id="footer2">
+                <div class="footer2-wrapper">
+                    <div id="footer-logo"></div>
+                    <span>{text:Footer Current Year}</span>
+                    <div class="icons-wrapper">
+                        <div class="social-icons">
+                        <a href="{text:Facebook Link}" id="fb-icon" title="Facebook"></a>
+                        <a href="{text:Twitter Link}" id="twitter-icon" title="Twitter"></a>
+                        <a href="{text:Instagram Link}" id="ig-icon" title="Instagram"></a>
+                        <a href="{text:Pinterest Link}" id="pinterest-icon" title="Pinterest"></a>
+                        <a href="{text:Youtube Link}" id="youtube-icon" title="Youtube"></a>
+                    </div>
+                    <div class="pay-options">
+                        <div id="visa-icon" title="Visa Card"></div>
+                        <div id="master-icon" title="Mastercard"></div>
+                        <div id="amex-icon" title="American Express"></div>
+                        <div id="paypal-icon" title="PayPal"></div>
+                        <div id="diners-icon" title="Diners Club"></div>
+                        <div id="discover-icon" title="Discover Card"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+   </div> <!-- /tabs -->
+</body>
+</html>
