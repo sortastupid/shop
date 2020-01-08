@@ -2,7 +2,7 @@
    PXU Photoset Extended Styles
    ========================================================================== */
 
-.clearit:before, .clearit:after { content: ""; display: table; }
+.clearit:before, .clearit:after { content: ""; display: table-cell; }
 .clearit:after { clear: both; }
 .clearit { *zoom: 1; }
 
